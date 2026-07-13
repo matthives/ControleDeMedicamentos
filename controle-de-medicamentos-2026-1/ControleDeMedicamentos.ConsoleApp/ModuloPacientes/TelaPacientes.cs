@@ -30,7 +30,7 @@ public class TelaPacientes : TelaBase<Pacientes>, ITelaOpcoes, ITelaCrud
         {
             Console.WriteLine(
                 "{0, -7} | {1, -30} | {2, -15} | {3, -17} | {4, -20} ",
-                f.Id, f.Nome, f.Telefone, f.CartãoDoSus, f.Cpf
+                f.Id, f.Nome, f.Telefone, f.CartaoDoSus, f.Cpf
             );
         }
 
@@ -51,12 +51,12 @@ public class TelaPacientes : TelaBase<Pacientes>, ITelaOpcoes, ITelaCrud
         string telefone = Console.ReadLine() ?? string.Empty;
 
         Console.Write("Digite o cartão do SUS do paciente: ");
-        string cnpj = Console.ReadLine() ?? string.Empty;
+        string cartaoDoSus = Console.ReadLine() ?? string.Empty;
 
         Console.Write("Digite o CPF do paciente: ");
-        string cnpj = Console.ReadLine() ?? string.Empty;
+        string cpf = Console.ReadLine() ?? string.Empty;
 
-        return new Paciente(nome, telefone, cartaoDoSus, cpf);
+        return new Pacientes(nome, telefone, cartaoDoSus, cpf);
     }
 
     protected override bool ExisteRegistroComInformacoesExclusivas(Pacientes entidade, int? idIgnorado = null)
@@ -65,7 +65,7 @@ public class TelaPacientes : TelaBase<Pacientes>, ITelaOpcoes, ITelaCrud
 
         foreach (Pacientes f in registros)
         {
-            if (f.Id != idIgnorado && f.Cnpj == entidade.Cnpj)
+            if (f.Id != idIgnorado && f.Cpf == entidade.Cpf)
             {
                 Console.WriteLine("---------------------------------");
                 Console.ForegroundColor = ConsoleColor.Red;

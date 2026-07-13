@@ -1,3 +1,4 @@
+using System.Text.RegularExpressions;
 using ControleDeMedicamentos.ConsoleApp.Compartilhado;
 using ControleDeMedicamentos.ConsoleApp.ModuloMedicamentos;
 using ControleDeMedicamentos.ConsoleApp.ModuloRequisicoes;
@@ -13,7 +14,7 @@ public class Pacientes : EntidadeBase
 
     public Pacientes() { }
 
-    public Pacientes(string nome, string telefone, string CartaoDoSus, string Cpf) : this()
+    public Pacientes(string nome, string telefone, string cartaoDoSus, string cpf) : this()
     {
         Nome = nome;
         Telefone = telefone;
@@ -42,11 +43,11 @@ public class Pacientes : EntidadeBase
 
     public override void Atualizar(EntidadeBase entidadeAtualizada)
     {
-        Fornecedor fornecedorAtualizado = (Fornecedor)entidadeAtualizada;
+        Pacientes pacientesAtualizado = (Pacientes)entidadeAtualizada;
 
-        Nome = fornecedorAtualizado.Nome;
-        Telefone = fornecedorAtualizado.Telefone;
-        CartaoDoSus = fornecedorAtualizado.CartaoDoSus;
-        Cpf = fornecedorAtualizado.Cpf;
+        Nome = pacientesAtualizado.Nome;
+        Telefone = pacientesAtualizado.Telefone;
+        CartaoDoSus = pacientesAtualizado.CartaoDoSus;
+        Cpf = pacientesAtualizado.Cpf;
     }
 }
