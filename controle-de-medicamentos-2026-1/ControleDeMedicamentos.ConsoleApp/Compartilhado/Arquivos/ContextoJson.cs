@@ -4,6 +4,7 @@ using ControleDeMedicamentos.ConsoleApp.ModuloFornecedores;
 using ControleDeMedicamentos.ConsoleApp.ModuloMedicamentos;
 using ControleDeMedicamentos.ConsoleApp.ModuloRequisicoes;
 using ControleDeMedicamentos.ConsoleApp.ModuloPacientes;
+using ControleDeMedicamentos.ConsoleApp.ModuloFuncionarios;
 
 namespace ControleDeMedicamentos.ConsoleApp.Compartilhado.Arquivos;
 
@@ -15,6 +16,8 @@ public class ContextoJson
     public List<Medicamento> Medicamentos { get; set; } = [];
     public List<RequisicaoEntrada> RequisicoesEntrada { get; set; } = [];
     public List<Pacientes> Pacientes { get; set; } = [];
+
+    public List<Funcionarios> Funcionarios { get; set; } = [];
 
     public ContextoJson()
     {
@@ -58,5 +61,7 @@ public class ContextoJson
         Fornecedores = contextoSalvo.Fornecedores;
         Medicamentos = contextoSalvo.Medicamentos;
         RequisicoesEntrada = contextoSalvo.RequisicoesEntrada;
+        Pacientes = contextoSalvo.Pacientes;
+        Funcionarios = contextoSalvo.Funcionarios;
     }
 }
