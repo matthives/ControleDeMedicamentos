@@ -28,15 +28,15 @@ public class Funcionarios : EntidadeBase
         if (!Regex.IsMatch(Telefone, @"^\(\d{2}\) \d{4,5}-\d{4}$"))
             erros.Add("O campo \"Telefone\" deve estar no formato (DDD) 90000-0000.");
 
-        if (!Regex.IsMatch(Cnpj, @"^\d{3}\.?\d{3}\.?\d{3}\/?\d{2}$"))
-            erros.Add("O campo \"CNPJ\" deve conter 11 dígitos.");
+        if (!Regex.IsMatch(Cpf, @"^\d{3}\.?\d{3}\.?\d{3}\/?\d{2}$"))
+            erros.Add("O campo \"CPF\" deve conter 11 dígitos.");
 
         return erros;
     }
 
     public override void Atualizar(EntidadeBase entidadeAtualizada)
     {
-        Funcionarios fornecedorAtualizado = (Funcionarios)entidadeAtualizada;
+        Funcionarios funcionariosAtualizado = (Funcionarios)entidadeAtualizada;
 
         Nome = funcionariosAtualizado.Nome;
         Telefone = funcionariosAtualizado.Telefone;
