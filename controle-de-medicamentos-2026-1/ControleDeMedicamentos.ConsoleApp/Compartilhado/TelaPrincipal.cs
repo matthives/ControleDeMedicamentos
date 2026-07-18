@@ -9,21 +9,24 @@ namespace ControleDeMedicamentos.ConsoleApp.Compartilhado;
 public class TelaPrincipal
 {
     private readonly TelaFornecedor telaFornecedor;
+    private readonly TelaPacientes telaPacientes;
     private readonly TelaMedicamento telaMedicamento;
     private readonly TelaRequisicaoEntrada telaRequisicaoEntrada;
-    private readonly TelaPacientes telaPacientes;
+
 
     public TelaPrincipal(ContextoJson contexto)
     {
         RepositorioFornecedorEmArquivo repositorioFornecedor = new RepositorioFornecedorEmArquivo(contexto);
+        RepositorioPacientesEmArquivo repositorioPacientes = new RepositorioPacientesEmArquivo(contexto);
         RepositorioMedicamentoEmArquivo repositorioMedicamento = new RepositorioMedicamentoEmArquivo(contexto);
         RepositorioRequisicaoEntradaEmArquivo repositorioRequisicao = new RepositorioRequisicaoEntradaEmArquivo(contexto);
-        RepositorioPacientesEmArquivo repositorioPacientes = new RepositorioPacientesEmArquivo(contexto);
+
 
         telaFornecedor = new TelaFornecedor(repositorioFornecedor);
+        telaPacientes = new TelaPacientes(repositorioPacientes);
         telaMedicamento = new TelaMedicamento(repositorioMedicamento, repositorioFornecedor);
         telaRequisicaoEntrada = new TelaRequisicaoEntrada(repositorioRequisicao, repositorioMedicamento);
-        telaPacientes = new TelaPacientes(repositorioPacientes, repositorioMedicamento);
+
     }
 
     public ITelaOpcoes? ObterOpcaoMenuPrincipal()
@@ -44,14 +47,14 @@ public class TelaPrincipal
         if (opcaoMenuPrincipal == "1")
             return telaFornecedor;
 
+        if (opcaoMenuPrincipal == "4")
+            return telaPacientes;
+
         if (opcaoMenuPrincipal == "2")
             return telaMedicamento;
 
         if (opcaoMenuPrincipal == "3")
             return telaRequisicaoEntrada;
-
-        if (opcaoMenuPrincipal == "4")
-            return telaPacientes;
 
         return null;
     }

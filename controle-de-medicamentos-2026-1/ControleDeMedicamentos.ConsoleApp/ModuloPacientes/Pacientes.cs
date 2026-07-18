@@ -9,16 +9,16 @@ public class Pacientes : EntidadeBase
 {
     public string Nome { get; set; } = string.Empty;
     public string Telefone { get; set; } = string.Empty;
-    public string CartaoDoSus { get; set; } = string.Empty;
+    public string CartaoSUS { get; set; } = string.Empty;
     public string Cpf { get; set; } = string.Empty;
 
     public Pacientes() { }
 
-    public Pacientes(string nome, string telefone, string cartaoDoSus, string cpf) : this()
+    public Pacientes(string nome, string telefone, string cartaoSUS, string cpf) : this()
     {
         Nome = nome;
         Telefone = telefone;
-        CartaoDoSus = cartaoDoSus;
+        CartaoSUS = cartaoSUS;
         Cpf = cpf;
     }
 
@@ -32,7 +32,7 @@ public class Pacientes : EntidadeBase
         if (!Regex.IsMatch(Telefone, @"^\(\d{2}\) \d{4,5}-\d{4}$"))
             erros.Add("O campo \"Telefone\" deve estar no formato (DDD) 90000-0000.");
 
-        if (!Regex.IsMatch(CartaoDoSus, @"^\d{3}\.?\d{3}\.?\d{3}\/?\d{3}-?\d{3}$"))
+        if (!Regex.IsMatch(CartaoSUS, @"^\d{15}$"))
             erros.Add("O campo \"Cartao do SUS\" deve conter 15 dígitos.");
 
         if (!Regex.IsMatch(Cpf, @"^\d{3}\.?\d{3}\.?\d{3}\/?\d{2}$"))
@@ -47,7 +47,7 @@ public class Pacientes : EntidadeBase
 
         Nome = pacientesAtualizado.Nome;
         Telefone = pacientesAtualizado.Telefone;
-        CartaoDoSus = pacientesAtualizado.CartaoDoSus;
+        CartaoSUS = pacientesAtualizado.CartaoSUS;
         Cpf = pacientesAtualizado.Cpf;
     }
 }

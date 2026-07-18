@@ -5,7 +5,7 @@ namespace ControleDeMedicamentos.ConsoleApp.ModuloPacientes;
 
 public class TelaPacientes : TelaBase<Pacientes>, ITelaOpcoes, ITelaCrud
 {
-    public TelaPacientes(RepositorioMedicamentoEmArquivo repositorioMedicamento, RepositorioPacientesEmArquivo repositorio) : base("Pacientes", repositorio)
+    public TelaPacientes(RepositorioPacientesEmArquivo repositorio) : base("Pacientes", repositorio)
     {
     }
 
@@ -20,7 +20,7 @@ public class TelaPacientes : TelaBase<Pacientes>, ITelaOpcoes, ITelaCrud
         }
 
         Console.WriteLine(
-            "{0, -7} | {1, -30} | {2, -15} | {3, -17} | {4, -20} ",
+            "{0, -7} | {1, -30} | {2, -15} | {3, -17} | {4, -14} ",
             "Id", "Nome", "Telefone", "Cartão do SUS", "CPF"
         );
 
@@ -29,8 +29,8 @@ public class TelaPacientes : TelaBase<Pacientes>, ITelaOpcoes, ITelaCrud
         foreach (Pacientes f in registros)
         {
             Console.WriteLine(
-                "{0, -7} | {1, -30} | {2, -15} | {3, -17} | {4, -20} ",
-                f.Id, f.Nome, f.Telefone, f.CartaoDoSus, f.Cpf
+                "{0, -7} | {1, -30} | {2, -15} | {3, -17} | {4, -14} ",
+                f.Id, f.Nome, f.Telefone, f.CartaoSUS, f.Cpf
             );
         }
 
@@ -51,12 +51,12 @@ public class TelaPacientes : TelaBase<Pacientes>, ITelaOpcoes, ITelaCrud
         string telefone = Console.ReadLine() ?? string.Empty;
 
         Console.Write("Digite o cartão do SUS do paciente: ");
-        string cartaoDoSus = Console.ReadLine() ?? string.Empty;
+        string cartaoSUS = Console.ReadLine() ?? string.Empty;
 
         Console.Write("Digite o CPF do paciente: ");
         string cpf = Console.ReadLine() ?? string.Empty;
 
-        return new Pacientes(nome, telefone, cartaoDoSus, cpf);
+        return new Pacientes(nome, telefone, cartaoSUS, cpf);
     }
 
     protected override bool ExisteRegistroComInformacoesExclusivas(Pacientes entidade, int? idIgnorado = null)
