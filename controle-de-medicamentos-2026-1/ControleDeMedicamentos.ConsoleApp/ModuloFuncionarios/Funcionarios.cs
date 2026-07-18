@@ -28,7 +28,7 @@ public class Funcionarios : EntidadeBase
         if (!Regex.IsMatch(Telefone, @"^\(\d{2}\) \d{4,5}-\d{4}$"))
             erros.Add("O campo \"Telefone\" deve estar no formato (DDD) 90000-0000.");
 
-        if (!Regex.IsMatch(Cpf, @"^\d{3}\.?\d{3}\.?\d{3}\/?\d{2}$"))
+        if (!Regex.IsMatch(Cpf, @"^\d{11}$"))
             erros.Add("O campo \"CPF\" deve conter 11 dígitos.");
 
         return erros;
