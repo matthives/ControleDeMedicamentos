@@ -30,6 +30,9 @@ public class RequisicaoSaida : EntidadeBase
         if (Medicamento == null)
             erros.Add("O campo \"Medicamento\" deve ser preenchido.");
 
+        if (Medicamento != null && Medicamento.QuantidadeEmEstoque < 0)
+            erros.Add("Não há estoque suficiente para realizar esta requisição");
+
         if (Pacientes == null)
             erros.Add("O campo \"Paciente\" deve ser preenchido.");
 
