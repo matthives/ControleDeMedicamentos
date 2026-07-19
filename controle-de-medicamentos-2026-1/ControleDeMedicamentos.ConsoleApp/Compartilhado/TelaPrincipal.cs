@@ -11,7 +11,7 @@ public class TelaPrincipal
 {
     private readonly TelaFornecedor telaFornecedor;
     private readonly TelaPacientes telaPacientes;
-    private readonly TelaRequisicaoSaida telaFuncionarios;
+    private readonly TelaFuncionarios telaFuncionarios;
     private readonly TelaMedicamento telaMedicamento;
     private readonly TelaRequisicaoEntrada telaRequisicaoEntrada;
     private readonly TelaRequisicaoSaida telaRequisicaoSaida;

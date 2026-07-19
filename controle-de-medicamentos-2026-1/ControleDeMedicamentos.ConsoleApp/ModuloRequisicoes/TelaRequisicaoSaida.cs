@@ -34,7 +34,7 @@ public class TelaRequisicaoSaida : TelaBase<RequisicaoSaida>, ITelaOpcoes, ITela
         foreach (RequisicaoSaida r in registros)
         {
             Console.WriteLine("Id: {0} | Paciente: {1} | Data: {2}",
-                r.Id, r.Paciente.Nome, r.Data.ToShortDateString());
+                r.Id, r.Pacientes.Nome, r.Data.ToShortDateString());
 
             Console.WriteLine(
                 "{0, -7} | {1, -20} | {2, -10}",
