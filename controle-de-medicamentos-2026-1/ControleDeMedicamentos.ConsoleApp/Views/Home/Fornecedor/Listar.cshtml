@@ -1,0 +1,50 @@
+@using ControleDeMedicamentos.ConsoleApp.ModuloFornecedores
+@using ControleDeMedicamentos.WebApp.ModuloFornecedores
+@model List<Fornecedor>
+
+<h1>Listagem de Forncecedor</h1>
+
+<p>
+    <a href="Cadastrar">Cadastrar fornecedor</a>
+</p>
+
+<table>
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Nome</th>
+            <th>Telefone</th>
+            <th>CNPJ</th>
+            <th>Ações</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (Fornecedor f in Model)
+        {
+            <tr>
+                <td>1</td>
+                <td>Johnson & Johnson</td>
+                <td>(49) 3222-0000</td>
+                <td>33.000.000/0001-01</td>
+                <td>
+                    <a href="Editar">Editar</a>
+                    <span> | </span>
+                    <a href="Excluir">Excluir</a>
+                </td>
+            </tr>
+        }
+
+        <tr>
+            <td>2</td>
+            <td>Aztrazeneca</td>
+            <td>(49) 3223-0000</td>
+            <td>22.000.000/0001-01</td>
+            <td>
+                <a href="Editar">Editar</a>
+                <span> | </span>
+                <a href="Excluir">Excluir</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
