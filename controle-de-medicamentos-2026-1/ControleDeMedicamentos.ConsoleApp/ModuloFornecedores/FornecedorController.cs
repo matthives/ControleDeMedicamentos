@@ -1,3 +1,4 @@
+using System.Runtime.CompilerServices;
 using ControleDeMedicamentos.ConsoleApp.Compartilhado.Arquivos;
 using ControleDeMedicamentos.ConsoleApp.ModuloFornecedores;
 using Microsoft.AspNetCore.Mvc;
@@ -23,5 +24,21 @@ public sealed class FornecedorController
         List<Fornecedor> fornecedores = repositorio.SelecionarTodos();
 
         return View(fornecedores);
+    }
+
+    [HttpGet]
+    public ActionResult Cadastrar()
+    {
+        return View();
+    }
+
+    [HttpPost]
+    public ActionResult Cadastrar(string nome, string telefone, string cnpj)
+    {
+        Fornecedor fornecedor = new Fornecedor(nome, telefone, cnpj);
+
+        repositorio.Cadastrar(fornecedor);
+
+        return RedirectToAction(nameof(Listar));
     }
 }
