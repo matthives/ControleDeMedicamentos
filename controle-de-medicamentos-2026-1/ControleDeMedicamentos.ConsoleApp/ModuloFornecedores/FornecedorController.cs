@@ -1,6 +1,7 @@
 using System.Runtime.CompilerServices;
 using ControleDeMedicamentos.ConsoleApp.Compartilhado.Arquivos;
 using ControleDeMedicamentos.ConsoleApp.ModuloFornecedores;
+using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Controllers;
 
@@ -41,4 +42,50 @@ public sealed class FornecedorController
 
         return RedirectToAction(nameof(Listar));
     }
+
+    [HttpGet]
+    public ActionResult Editar(int Id)
+    {
+        Fornecedor? fornecedor = repositorio.SelecionarPorId(id);
+
+        if (fornecedor == null)
+            return NotFound();
+
+        return View(fornecedor);
+    }
+
+    [HttpPost]
+    public ActionResult Editar(int id, string nome, string telefone, string cnpj)
+    {
+        Fornecedor? fornecedor = repositorio.SelecionarPorId(id);
+
+        if (fornecedor == null)
+            return NotFound();
+
+        Fornecedor fornecedorAtualizado = new Fornecedor(nome, telefone, cnpj)
+
+        bool conseguiuEditar = repositorio.Editar(id, fornecedorAtualizado);
+
+        if (!conseguiuEditar)
+            return NotFound();
+
+        return RedirectToAction();
+    }
+
+    [HttpGet]
+
+    public ActionResult Excluir(int id)
+    {
+        Fornecedor? fornecedor = repositorio.SelecionarPorId(id);
+
+        if (fornecedor == null)
+            return NotFound();
+
+        return View(fornecedor);
+    }
+
+    [HttpPost]
+    [ActionName("Excluir")]
+
+    public ActionResult
 }
