@@ -69,11 +69,10 @@ public sealed class FornecedorController : Controller
         if (!conseguiuEditar)
             return NotFound();
 
-        return RedirectToAction();
+        return RedirectToAction(nameof(Listar));
     }
 
     [HttpGet]
-
     public ActionResult Excluir(int id)
     {
         Fornecedor? fornecedor = repositorio.SelecionarPorId(id);
@@ -84,11 +83,15 @@ public sealed class FornecedorController : Controller
         return View(fornecedor);
     }
 
-    // [HttpPost]
-    // [ActionName("Excluir")]
+    [HttpPost]
+    [ActionName("Excluir")]
+    public ActionResult ConfirmarExclusao(int id)
+    {
+        bool conseguiuExcluir = repositorio.Excluir(id);
 
-    // public ActionResult ConfirmarExclusao(int id)
-    // {
-    //     // bool conseguiuExcluir
-    // }
+        if (!conseguiuExcluir)
+            return NotFound();
+
+        return RedirectToAction(nameof(Listar));
+    }
 }
