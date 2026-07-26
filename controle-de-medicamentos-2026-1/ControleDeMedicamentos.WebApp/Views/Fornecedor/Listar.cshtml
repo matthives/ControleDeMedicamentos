@@ -1,7 +1,15 @@
 @using ControleDeMedicamentos.WebApp.ModuloFornecedores
+
 @model List<Fornecedor>
 
-<h1>Listagem de Forncecedor</h1>
+<h2>Controle de Medicamentos</h2>
+
+<hr />
+<a href="/">Início</a> / @* Âncora ou Link *@
+<a href="/Fornecedor/Listar">Fornecedores</a> / @* Âncora ou Link *@
+<hr />
+
+<h1>Listagem de Fornecedores</h1>
 
 <p>
     <a href="Cadastrar">Cadastrar fornecedor</a>
@@ -22,28 +30,16 @@
         @foreach (Fornecedor f in Model)
         {
             <tr>
-                <td>1</td>
-                <td>Johnson & Johnson</td>
-                <td>(49) 3222-0000</td>
-                <td>33.000.000/0001-01</td>
+                <td>@f.Id</td>
+                <td>@f.Nome</td>
+                <td>@f.Telefone</td>
+                <td>@f.Cnpj</td>
                 <td>
-                    <a href="Editar">Editar</a>
+                    <a href="Editar/@f.Id">Editar</a>
                     <span> | </span>
-                    <a href="Excluir">Excluir</a>
+                    <a href="Excluir/@f.Id">Excluir</a>
                 </td>
             </tr>
         }
-
-        <tr>
-            <td>2</td>
-            <td>Aztrazeneca</td>
-            <td>(49) 3223-0000</td>
-            <td>22.000.000/0001-01</td>
-            <td>
-                <a href="Editar">Editar</a>
-                <span> | </span>
-                <a href="Excluir">Excluir</a>
-            </td>
-        </tr>
     </tbody>
 </table>
