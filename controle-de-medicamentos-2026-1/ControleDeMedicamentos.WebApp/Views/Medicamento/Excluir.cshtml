@@ -1,17 +1,9 @@
-@using ControleDeMedicamentos.WebApp.ModuloFornecedores
-@using ControleDeMedicamentos.WebApp.ModuloMedicamentos
-
 @model Medicamento;
 
-<h2>Controle de Medicamentos</h2>
-
-<hr />
-<a href="/">Início</a> / @* Âncora ou Link *@
-<a href="/Fornecedor/Listar">Fornecedores</a> / @* Âncora ou Link *@
-<a href="/Medicamento/Listar">Medicamentos</a> / @* Âncora ou Link *@
-<hr />
-
-<h1>Exclusão de Medicamento</h1>
+@{
+    Layout = "_Layout";
+    ViewBag.Titulo = "Exclusão de Medicamento";
+}
 
 <form action="/Medicamento/Excluir/@Model.Id" method="post">
     <p>
