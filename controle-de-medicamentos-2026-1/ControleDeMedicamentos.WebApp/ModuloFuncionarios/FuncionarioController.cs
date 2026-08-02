@@ -47,7 +47,7 @@ public sealed class FuncionarioController : Controller
     [HttpPost]
     public ActionResult Cadastrar(CadastrarFuncionarioViewModel cadastrarVm)
     {
-        Funcionario funcionario = new Funcionarios(
+        Funcionarios funcionario = new Funcionarios(
             cadastrarVm.Nome,
             cadastrarVm.Telefone,
             cadastrarVm.Cpf

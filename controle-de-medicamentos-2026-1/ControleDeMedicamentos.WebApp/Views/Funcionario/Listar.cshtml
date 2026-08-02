@@ -1,6 +1,7 @@
 @using ControleDeMedicamentos.WebApp.ModuloFornecedores
+@using ControleDeMedicamentos.WebApp.ModuloFuncionarios
 
-@model List<Fornecedor>
+@model List<ListarFuncionarioViewModel>
 
 <h2>Controle de Medicamentos</h2>
 
@@ -8,7 +9,7 @@
 <a href="/">Início</a> / @* Âncora ou Link *@
 <a href="/Fornecedor/Listar">Fornecedores</a> / @* Âncora ou Link *@
 <a href="/Medicamento/Listar">Medicamentos</a> / @* Âncora ou Link *@
-<a href="/Medicamento/Listar">Funcionários</a> / @* Âncora ou Link *@
+<a href="/Funcionario/Listar">Funcionários</a> / @* Âncora ou Link *@
 <hr />
 
 <h1>Listagem de Funcionários</h1>
@@ -29,13 +30,12 @@
     </thead>
 
     <tbody>
-        @foreach (Funcionario f in Model)
+        @foreach (ListarFuncionarioViewModel f in Model)
         {
             <tr>
                 <td>@f.Id</td>
                 <td>@f.Nome</td>
                 <td>@f.Telefone</td>
-                <td>@f.Cnpj</td>
                 <td>
                     <a href="Editar/@f.Id">Editar</a>
                     <span> | </span>
