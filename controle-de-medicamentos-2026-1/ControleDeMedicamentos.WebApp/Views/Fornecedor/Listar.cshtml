@@ -1,16 +1,9 @@
-@using ControleDeMedicamentos.WebApp.ModuloFornecedores
-
 @model List<Fornecedor>
 
-<h2>Controle de Medicamentos</h2>
-
-<hr />
-<a href="/">Início</a> / @* Âncora ou Link *@
-<a href="/Fornecedor/Listar">Fornecedores</a> / @* Âncora ou Link *@
-<a href="/Medicamento/Listar">Medicamentos</a> / @* Âncora ou Link *@
-<hr />
-
-<h1>Listagem de Fornecedores</h1>
+@{
+    Layout = "_Layout";
+    ViewBag.Titulo = "Listagem de Fornecedores";
+}
 
 <p>
     <a href="Cadastrar">Cadastrar fornecedor</a>
