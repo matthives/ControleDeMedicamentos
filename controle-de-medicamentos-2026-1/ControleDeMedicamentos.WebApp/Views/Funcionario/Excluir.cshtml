@@ -4,20 +4,21 @@
     Layout = "_Layout";
     ViewBag.Titulo = "Exclusão de Funcionário";
 }
+<div class="row">
+    <form asp-action="Excluir" asp-route-id="@Model.Id" method="post">
 
-<form asp-action="Excluir" asp-route-id="@Model.Id" method="post">
+        <p>
+            Você realmente deseja excluir o registro abaixo?
+        </p>
 
-    <p>Você realmente deseja excluir o registro abaixo?</p>
+        <div> <label asp-for="Nome"></label>
+            <br />
+            <input asp-for="Nome" type="text" readonly>
+        </div>
 
-    <div>
-        <label asp-for="Nome"></label>
-        <br />
-        <input asp-for="Nome" type="text" readonly>
-    </div>
-
-    <button type="submit">Confirmar</button>
-</form>
-
+        <button type="submit">Confirmar</button>
+    </form>
+</div>
 <p>
     <a asp-action="Listar">Voltar para a lista</a>
 </p>
