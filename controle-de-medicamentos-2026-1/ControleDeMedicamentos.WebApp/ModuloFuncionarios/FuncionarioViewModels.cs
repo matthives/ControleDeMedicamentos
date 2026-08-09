@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace ControleDeMedicamentos.WebApp.ModuloFuncionarios;
 
-public record ListarFuncionarioViewModel(int Id, string Nome, string Telefone);
+public record ListarFuncionarioViewModel(int Id, string Nome, string Telefone, string Cpf);
 
 public record CadastrarFuncionarioViewModel(
     string Nome,
