@@ -24,6 +24,21 @@ public sealed class MedicamentoController : Controller
     {
         List<Medicamento> medicamentos = repositorioMedicamento.SelecionarTodos();
 
+        List<ListarMedicamentosViewModel> viewModels = [];
+
+        foreach (Medicamento medicamento in medicamentos)
+        {
+            ListarMedicamentosViewModel viewModel = new ListarMedicamentosViewModel
+            {
+                Med.Id,
+                Med.Nome,
+                Med.Descricao,
+                Med.QuantidadeEmEstoque,
+            };
+
+            viewModels.Add(viewModel);
+        }
+
         return View(medicamentos);
     }
 
