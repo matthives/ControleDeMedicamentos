@@ -1,4 +1,5 @@
 using ControleDeMedicamentos.WebApp.Compartilhado;
+using ControleDeMedicamentos.WebApp.ModuloFuncionarios;
 using ControleDeMedicamentos.WebApp.ModuloMedicamentos;
 
 namespace ControleDeMedicamentos.WebApp.ModuloRequisicoes;
@@ -6,13 +7,21 @@ namespace ControleDeMedicamentos.WebApp.ModuloRequisicoes;
 public class TelaRequisicaoEntrada : TelaBase<RequisicaoEntrada>, ITelaOpcoes, ITelaCrud
 {
     private readonly RepositorioMedicamentoEmArquivo repositorioMedicamento;
+    private readonly RepositorioFuncionarios repositorioFuncionario;
 
     public TelaRequisicaoEntrada(
         RepositorioRequisicaoEntradaEmArquivo repositorioRequisicao,
-        RepositorioMedicamentoEmArquivo repositorioMedicamento
+        RepositorioMedicamentoEmArquivo repositorioMedicamento,
+        RepositorioFuncionarios repositorioFuncionarios
     ) : base("Requisição de Entrada", repositorioRequisicao)
     {
         this.repositorioMedicamento = repositorioMedicamento;
+        this.repositorioFuncionario = repositorioFuncionarios;
+    }
+
+    protected override bool ExistemDependenciasAtivasDoRegistro(int idRegistro)
+    {
+        return false;
     }
 
     public override void VisualizarTodos(bool deveExibirCabecalho)
@@ -56,13 +65,20 @@ public class TelaRequisicaoEntrada : TelaBase<RequisicaoEntrada>, ITelaOpcoes, I
 
         Console.Write("Digite o ID do medicamento que deseja requisitar: ");
         int idMedicamento = Convert.ToInt32(Console.ReadLine());
-
         Medicamento medicamento = repositorioMedicamento.SelecionarPorId(idMedicamento)!;
 
-        Console.Write("Digite a quantidade que deseja requisitar: ");
+        Console.WriteLine("---------------------------------");
+
+        Console.Write("Digite a quantidade de medicamento que deseja requisitar: ");
         int quantidade = Convert.ToInt32(Console.ReadLine());
 
-        return new RequisicaoEntrada(medicamento, quantidade);
+        VisualizarFuncionarios();
+
+        Console.Write("Digite o ID do funcionário requisitante: ");
+        int idFuncionario = Convert.ToInt32(Console.ReadLine());
+        Funcionarios funcionarios = repositorioFuncionario.SelecionarPorId(idFuncionario)!;
+
+        return new RequisicaoEntrada(medicamento, quantidade, funcionarios);
     }
 
     private void VisualizarMedicamentos()
@@ -83,8 +99,21 @@ public class TelaRequisicaoEntrada : TelaBase<RequisicaoEntrada>, ITelaOpcoes, I
         }
     }
 
-    protected override bool ExistemDependenciasAtivasDoRegistro(int idRegistro)
+    private void VisualizarFuncionarios()
     {
-        return false;
+        Console.WriteLine(
+            "{0, -7} | {1, -30} | {2, -15} | {3, -14}",
+            "Id", "Nome", "Telefone", "CPF"
+        );
+
+        List<Funcionarios> registros = repositorioFuncionario.SelecionarTodos();
+
+        foreach (Funcionarios f in registros)
+        {
+            Console.WriteLine(
+                "{0, -7} | {1, -30} | {2, -15} | {3, -14}",
+                f.Id, f.Nome, f.Telefone, f.Cpf
+            );
+        }
     }
 }
