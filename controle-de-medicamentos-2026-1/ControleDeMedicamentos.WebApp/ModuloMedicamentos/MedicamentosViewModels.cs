@@ -8,15 +8,15 @@ public record FornecedorMedicamentoViewModel(
     string Nome
 );
 
-public record ListarMedicamentoViewModel(
+public record ListarMedicamentosViewModel(
     int Id,
     string Nome,
     string Descricao,
-    string NomeFornecedor,
+    string Fornecedor,
     int QuantidadeEmEstoque
 );
 
-public record CadastrarMedicamentoViewModel(
+public record CadastrarMedicamentosViewModel(
     string Nome,
     string Descricao,
     int FornecedorId
@@ -25,7 +25,7 @@ public record CadastrarMedicamentoViewModel(
     public List<FornecedorMedicamentoViewModel> Fornecedores { get; init; } = [];
 }
 
-public record EditarMedicamentoViewModel(
+public record EditarMedicamentosViewModel(
     int Id,
     string Nome,
     string Descricao,

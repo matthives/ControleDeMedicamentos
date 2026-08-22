@@ -99,7 +99,7 @@ public class RequisicaoSaidaController : Controller
     {
         List<PacienteRequisicaoSaidaViewModel> viewModels = [];
 
-        foreach (Paciente paciente in repositorioPaciente.SelecionarTodos())
+        foreach (Pacientes paciente in repositorioPaciente.SelecionarTodos())
         {
             PacienteRequisicaoSaidaViewModel viewModel = new PacienteRequisicaoSaidaViewModel(
                 paciente.Id,

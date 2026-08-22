@@ -63,15 +63,15 @@ public class RequisicaoEntradaController : Controller
         if (medicamento == null)
             return NotFound();
 
-        Funcionario? funcionario = repositorioFuncionario.SelecionarPorId(viewModel.FuncionarioId);
+        Funcionarios? funcionarios = repositorioFuncionario.SelecionarPorId(viewModel.FuncionarioId);
 
-        if (funcionario == null)
+        if (funcionarios == null)
             return NotFound();
 
         RequisicaoEntrada requisicaoEntrada = new RequisicaoEntrada(
             medicamento,
             viewModel.Quantidade,
-            funcionario
+            funcionarios
         );
 
         repositorio.Cadastrar(requisicaoEntrada);
@@ -100,11 +100,11 @@ public class RequisicaoEntradaController : Controller
     {
         List<FuncionarioRequisicaoEntradaViewModel> viewModels = [];
 
-        foreach (Funcionario funcionario in repositorioFuncionario.SelecionarTodos())
+        foreach (Funcionarios funcionarios in repositorioFuncionario.SelecionarTodos())
         {
             FuncionarioRequisicaoEntradaViewModel viewModel = new FuncionarioRequisicaoEntradaViewModel(
-                funcionario.Id,
-                funcionario.Nome
+                funcionarios.Id,
+                funcionarios.Nome
             );
 
             viewModels.Add(viewModel);

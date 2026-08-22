@@ -24,11 +24,11 @@ public sealed class MedicamentoController : Controller
     {
         List<Medicamento> medicamentos = repositorioMedicamento.SelecionarTodos();
 
-        List<ListarMedicamentoViewModel> viewModels = [];
+        List<ListarMedicamentosViewModel> viewModels = [];
 
         foreach (Medicamento med in medicamentos)
         {
-            ListarMedicamentoViewModel viewModel = new ListarMedicamentoViewModel(
+            ListarMedicamentosViewModel viewModel = new ListarMedicamentosViewModel(
                 med.Id,
                 med.Nome,
                 med.Descricao,
@@ -45,7 +45,7 @@ public sealed class MedicamentoController : Controller
     [HttpGet]
     public ActionResult Cadastrar()
     {
-        CadastrarMedicamentoViewModel viewModel = new CadastrarMedicamentoViewModel(
+        CadastrarMedicamentosViewModel viewModel = new CadastrarMedicamentosViewModel(
             string.Empty,
             string.Empty,
             0
@@ -56,7 +56,7 @@ public sealed class MedicamentoController : Controller
     }
 
     [HttpPost]
-    public ActionResult Cadastrar(CadastrarMedicamentoViewModel viewModel)
+    public ActionResult Cadastrar(CadastrarMedicamentosViewModel viewModel)
     {
         Fornecedor? fornecedor = repositorioFornecedor.SelecionarPorId(viewModel.FornecedorId);
 
@@ -78,7 +78,7 @@ public sealed class MedicamentoController : Controller
         if (medicamento == null)
             return NotFound();
 
-        EditarMedicamentoViewModel viewModel = new EditarMedicamentoViewModel(
+        EditarMedicamentosViewModel viewModel = new EditarMedicamentosViewModel(
             id,
             medicamento.Nome,
             medicamento.Descricao,
@@ -92,7 +92,7 @@ public sealed class MedicamentoController : Controller
     }
 
     [HttpPost]
-    public ActionResult Editar(EditarMedicamentoViewModel viewModel)
+    public ActionResult Editar(EditarMedicamentosViewModel viewModel)
     {
         Fornecedor? fornecedor = repositorioFornecedor.SelecionarPorId(viewModel.FornecedorId);
 

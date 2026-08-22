@@ -3,7 +3,6 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace ControleDeMedicamentos.WebApp.ModuloFuncionarios;
 
-public
 public sealed class FuncionarioController : Controller
 {
     private readonly RepositorioFuncionarios repositorioFuncionario;
