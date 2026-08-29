@@ -7,12 +7,9 @@ public class PacienteController : Controller
 {
     private readonly RepositorioPacientesEmArquivo repositorio;
 
-    public PacienteController()
+    public PacienteController(RepositorioPacientesEmArquivo repositorio)
     {
-        ContextoJson contexto = new ContextoJson();
-        contexto.Carregar();
-
-        repositorio = new RepositorioPacientesEmArquivo(contexto);
+        this.repositorio = repositorio;
     }
 
     [HttpGet]

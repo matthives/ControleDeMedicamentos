@@ -4,7 +4,28 @@
 // ... geralmente responde com arquivos HTML / CSS / JS (Páginas Web)
 
 // Objeto de configuração do servidor
+using ControleDeMedicamentos.WebApp.Compartilhado.Arquivos;
+using ControleDeMedicamentos.WebApp.ModuloFornecedores;
+using ControleDeMedicamentos.WebApp.ModuloMedicamentos;
+using ControleDeMedicamentos.WebApp.ModuloFuncionarios;
+using ControleDeMedicamentos.WebApp.ModuloPacientes;
+using ControleDeMedicamentos.WebApp.ModuloRequisicoes;
+
+
 WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
+
+// Adiciona e injeta uma instância por requisição/conexão
+
+// Delegates
+// Func<IServiceProvider, ContextoJson> ImplementationFactory
+builder.Services.AddScoped<ContextoJson>(ContextoJson.InjetarContexto);
+builder.Services.AddScoped<RepositorioMedicamentoEmArquivo>();
+builder.Services.AddScoped<RepositorioFornecedorEmArquivo>();
+builder.Services.AddScoped<RepositorioFuncionarios>();
+builder.Services.AddScoped<RepositorioPacientesEmArquivo>();
+builder.Services.AddScoped<RepositorioRequisicaoEntradaEmArquivo>();
+builder.Services.AddScoped<RepositorioRequisicaoSaidaEmArquivo>();
+
 
 // Habilita o MVC = Model - View - Controller
 builder.Services.AddControllersWithViews();
