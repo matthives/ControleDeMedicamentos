@@ -18,7 +18,18 @@ WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 
 // Delegates
 // Func<IServiceProvider, ContextoJson> ImplementationFactory
-builder.Services.AddScoped<ContextoJson>(ContextoJson.InjetarContexto);
+
+// Expressão lambda
+
+builder.Services.AddScoped(_ =>
+{
+    ContextoJson contexto = new ContextoJson();
+
+    contexto.Carregar();
+
+    return contexto;
+});
+
 builder.Services.AddScoped<RepositorioMedicamentoEmArquivo>();
 builder.Services.AddScoped<RepositorioFornecedorEmArquivo>();
 builder.Services.AddScoped<RepositorioFuncionarios>();
