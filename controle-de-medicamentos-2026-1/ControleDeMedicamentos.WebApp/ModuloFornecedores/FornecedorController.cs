@@ -48,10 +48,13 @@ public sealed class FornecedorController : Controller
     public ActionResult Cadastrar(CadastrarFornecedorViewModel cadastrarVm)
     {
         Fornecedor fornecedor = new Fornecedor(
-            cadastrarVm.Nome,
-            cadastrarVm.Telefone,
-            cadastrarVm.Cnpj
+            cadastrarVm.Nome ?? string.Empty,
+            cadastrarVm.Telefone ?? string.Empty,
+            cadastrarVm.Cnpj ?? string.Empty
         );
+
+        if (!ModelState.IsValid)
+            return View(cadastrarVm);
 
         repositorio.Cadastrar(fornecedor);
 
@@ -84,6 +87,9 @@ public sealed class FornecedorController : Controller
             editarVm.Telefone,
             editarVm.Cnpj
         );
+
+        if (!ModelState.IsValid)
+            return View(editarVm);
 
         bool conseguiuEditar = repositorio.Editar(editarVm.Id, fornecedorAtualizado);
 
