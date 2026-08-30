@@ -10,7 +10,7 @@ on:
   workflow_dispatch:
   
 env: 
-  PROJECT_PATH: ./src/ControleDeMedicamentos/ControleDeMedicamentos.WebApp.csproj
+  PROJECT_PATH: ./controle-de-medicamentos-2026-1/ControleDeMedicamentos.WebApp/ControleDeMedicamentos.WebApp.csproj
   PUBLISH_PATH: ./publish
   
 jobs:
