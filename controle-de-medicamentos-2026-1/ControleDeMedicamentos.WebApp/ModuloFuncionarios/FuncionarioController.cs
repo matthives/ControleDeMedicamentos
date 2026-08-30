@@ -49,6 +49,9 @@ public sealed class FuncionarioController : Controller
             cadastrarVm.Cpf
         );
 
+        if (!ModelState.IsValid)
+            return View(cadastrarVm);
+
         repositorioFuncionario.Cadastrar(funcionario);
 
         return RedirectToAction(nameof(Listar));
@@ -80,6 +83,9 @@ public sealed class FuncionarioController : Controller
             editarVm.Telefone,
             editarVm.Cpf
         );
+
+        if (!ModelState.IsValid)
+            return View(editarVm);
 
         bool conseguiuEditar = repositorioFuncionario.Editar(editarVm.Id, funcionarioAtualizado);
 
